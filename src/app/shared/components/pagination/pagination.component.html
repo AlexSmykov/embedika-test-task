@@ -1,0 +1,29 @@
+<div *ngIf="movePossibility$ | async as data" class="pagination">
+  <div class="pagination__prev">
+    <img
+      (click)="onPagePrev()"
+      *ngIf="
+        data.canPrev && (isLoading$ | async) === false;
+        else InactiveArrowTemplate
+      "
+      src="assets/icons/blue-small-arrow.svg"
+      alt="Назад"
+    />
+  </div>
+  <h2 class="pagination__number">{{ currentPage$ | async }}</h2>
+  <div class="pagination__next">
+    <img
+      (click)="onPageNext()"
+      *ngIf="
+        data.canNext && (isLoading$ | async) === false;
+        else InactiveArrowTemplate
+      "
+      src="assets/icons/blue-small-arrow.svg"
+      alt="Вперёд"
+    />
+  </div>
+</div>
+
+<ng-template #InactiveArrowTemplate>
+  <img class="pagination_back" src="assets/icons/gray-small-arrow.svg" alt="" />
+</ng-template>
