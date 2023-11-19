@@ -1,6 +1,7 @@
-# EmbedikaTestTask
+# Embedika test task
 Проект - тестовое задание для компании [Embedika](https://embedika.ru).
 Создавался за 7 дней (13.11.23 - 20.11.23)
+На проекте используется Angular v17.
 
 
 ## Overview
