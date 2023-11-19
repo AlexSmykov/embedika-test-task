@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 24px;
+
+  .pagination {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    --sidebar-width: 400px;
+
+    &__prev {
+      rotate: 180deg;
+    }
+
+    &__number {
+      margin: 0;
+    }
+
+    &__next {
+    }
+  }
+}

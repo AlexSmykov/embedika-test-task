@@ -1,0 +1,13 @@
+<app-loading-placeholder>
+  <ng-container *ngIf="(data$ | async)?.length; else noContentTemplate">
+    <ul class="list">
+      <li *ngFor="let item of data$ | async">
+        <app-list-item [item]="item"></app-list-item>
+      </li>
+    </ul>
+  </ng-container>
+</app-loading-placeholder>
+
+<ng-template #noContentTemplate>
+  <h2 class="no-data-info">Данных не найдено</h2>
+</ng-template>

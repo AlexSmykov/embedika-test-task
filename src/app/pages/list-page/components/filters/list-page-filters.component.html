@@ -1,0 +1,20 @@
+<div class="filters">
+  <app-text-input
+    [control]="filtersFormGroup.controls.name"
+    [placeholder]="'Название'"
+  ></app-text-input>
+
+  <app-multiselect-input
+    [control]="filtersFormGroup.controls.home_port"
+    [variants]="portVariants"
+    [placeholder]="'Порт'"
+  ></app-multiselect-input>
+
+  <div>
+    <h2>Тип</h2>
+    <app-radio-input
+      [control]="filtersFormGroup.controls.type"
+      [variants]="typeVariants"
+    ></app-radio-input>
+  </div>
+</div>

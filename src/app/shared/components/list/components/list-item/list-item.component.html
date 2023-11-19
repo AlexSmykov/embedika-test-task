@@ -1,0 +1,16 @@
+<div class="item">
+  <div class="item__header">
+    <h2 class="item__header__name">{{ item.name }}</h2>
+    <img
+      class="item__header__arrow"
+      src="assets/icons/arrow.svg"
+      alt="Перейти по элементу"
+    />
+  </div>
+  <div class="item__body">
+    <app-value-pair
+      *ngFor="let pair of item.values"
+      [pair]="pair"
+    ></app-value-pair>
+  </div>
+</div>

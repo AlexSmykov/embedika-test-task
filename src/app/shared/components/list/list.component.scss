@@ -1,0 +1,15 @@
+:host {
+  width: 100%;
+  height: 100%;
+
+  .list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style-type: none;
+  }
+  .no-data-info {
+    margin: auto;
+  }
+}

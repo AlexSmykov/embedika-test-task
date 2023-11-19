@@ -1,0 +1,7 @@
+<ng-container *ngIf="(isLoading$ | async) === false; else placeholderTemplate">
+  <ng-content></ng-content>
+</ng-container>
+
+<ng-template #placeholderTemplate>
+  <div class="loader"></div>
+</ng-template>

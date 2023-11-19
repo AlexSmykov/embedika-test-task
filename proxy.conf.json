@@ -1,0 +1,10 @@
+{
+  "/v4": {
+    "target": "https://api.spacexdata.com/v4",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/v4": ""
+    }
+  }
+}
