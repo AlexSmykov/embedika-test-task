@@ -1,27 +1,44 @@
 # EmbedikaTestTask
+Проект - тестовое задание для компании [Embedika](https://embedika.ru).
+Создавался за 7 дней (13.11.23 - 20.11.23)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 
-## Development server
+## Overview
+Проект представляет собой список элементов, которые берутся из открытого API [SpaceX-API](https://github.com/r-spacex/SpaceX-API). Сама страница списка и представляет собой главную страницу.
+Здесь есть пагинация, необходимые фильтры и анимация загрузки.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Filters
+Есть 3 главных фильтра:
+- поиск по названия
+- мультиселект по полю `home_port` 
+- селект по полю `type`
 
-## Code scaffolding
+Из-за особенности API, поиск по названию находит результаты только с полным совпадением по введённой строке. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Conventions
+На проекте используются механизмы автоматизации и форматирования кода, такие как:
+- husky, для создания коммит-хуков,
+- ESLint, для повышения качества кода
+- Prettier, для красивого и быстрого форматирования кода.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+К стилям коммитов привязана конвенция по коммитам, обязывающая разработчиков писать коммиты в строгом стиле ([подробнее](https://www.conventionalcommits.org/en/v1.0.0/)) 
 
-## Running unit tests
+Также, перед коммитом запускается проверка линтером и приттиером, которая не даст сделать коммит, если код не отформатирован, поэтому рекомендуется настроить автоматического сохрание `on save` в вашем ide.
+Команда для ручного форматирования:
+```
+npm run reformat
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Личные правила по структуре и неймингу файлов:
+- Компоненты и сервисы, оспользующиеся более чем в 1 месте, следует выносит в `shared`
+- Сервисы, интерфейсы и дто следует класть рядом с компонентом, к которму они принадлежат, если они не общие.
+- Внутренние интерфейсы и дто должны находиться в разных файлах
+- Интерфейс выносится в `shared`, если у него нет компонента, к которуму он логически и семантически принадлежит.
+- Компоненты, обозначающие страницы (`page`) имеют название как `<some-name>-page.component`, для большей консистентности кода.
+- Все файлы, относящиеся к компоненту, включая диренкторию, должны иметь одинаковый нейминг до первой точки в названии.
+- Внутри каждого компонента могут быть такие директории как:
+  - `pages` - содержаящая в себе страницы, которые являются дочерним роутингом от родительской.
+  - `components` - содержит в себе все остальные компоненты. не являющиеся страницами в семантическом палне и использующиеся только в данном компоненте (иначе, они должны быть вынесены в `shared`).
+ 
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
