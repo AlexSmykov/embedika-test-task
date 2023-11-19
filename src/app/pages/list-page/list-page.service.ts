@@ -64,6 +64,7 @@ export class ListPageService {
   private deserialize(dto: TQueriedShipDto[]): TListItem[] {
     return dto.map((item) => {
       return {
+        id: item.id,
         name: item.name,
         values: [
           {

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core'
 
 import { TListItem } from '../../list.interface'
+import { EFullRoutes } from '../../../../router-paths'
 
 @Component({
   selector: 'app-list-item',
@@ -9,4 +10,6 @@ import { TListItem } from '../../list.interface'
 })
 export class ListItemComponent {
   @Input({ required: true }) item!: TListItem
+
+  EFullRoutes = EFullRoutes
 }

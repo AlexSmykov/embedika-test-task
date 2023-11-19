@@ -21,7 +21,7 @@ export class FilterParamsService {
     this._filterParams$.next(this.serializeFilters(filters))
   }
 
-  serializeFilters(data: TFiltersRaw): TFilters {
+  private serializeFilters(data: TFiltersRaw): TFilters {
     const filters = {} as TFilters
     Object.entries(data).forEach(([filterKey, filterValue]) => {
       if (typeof filterValue === 'number' || typeof filterValue === 'string') {

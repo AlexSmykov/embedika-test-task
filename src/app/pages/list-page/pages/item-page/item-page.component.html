@@ -1,0 +1,21 @@
+<section class="item-section">
+  <app-back-button-page [backUrl]="EFullRoutes.LIST_PAGE" [label]="'Вернуться'">
+    <app-loading-placeholder>
+      <div *ngIf="item$ | async as item" class="page-content">
+        <h1 class="header">{{ item.name }}</h1>
+        <div class="params-grid">
+          <app-value-pair [pair]="item.type"></app-value-pair>
+          <app-value-pair [pair]="item.home_port"></app-value-pair>
+          <app-value-pair [pair]="item.mass_kg"></app-value-pair>
+          <app-value-pair [pair]="item.year_built"></app-value-pair>
+        </div>
+        <div class="ship-roles">
+          <label class="ship-roles__label">Роли</label>
+          <span class="ship-roles__items">{{
+            stringifyRoles(item.roles)
+          }}</span>
+        </div>
+      </div>
+    </app-loading-placeholder>
+  </app-back-button-page>
+</section>
