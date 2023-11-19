@@ -29,7 +29,7 @@ export type TAllShipDto = {
 
 // Здесь указываются необходимые поля
 // (также необходимо для `select` параметра)
-export const shipSelectedFields = ['type', 'home_port', 'name'] as const
+export const shipSelectedFields = ['type', 'home_port', 'name', 'id'] as const
 
 // Тип возвращаемого дто
 export type TQueriedShipDto = TSelectedFields<
