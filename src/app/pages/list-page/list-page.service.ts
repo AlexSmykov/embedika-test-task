@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs'
+import { BehaviorSubject, combineLatest, Observable, switchMap } from 'rxjs'
 
 import { TListItem } from '../../shared/components/list/list.interface'
 import { shipSelectedFields, TQueriedShipDto } from './list-page.dto'
@@ -31,33 +31,33 @@ export class ListPageService {
   getDataAction(pageSize: number): void {
     combineLatest({
       pagination: this.paginationService.currentPage$,
-      otherFilters: this.filterParamsService.filterParams$,
+      filters: this.filterParamsService.filterParams$,
     })
-      .pipe(untilDestroyed(this))
-      .subscribe((params) => {
-        const options = {
-          limit: pageSize,
-          offset: (params.pagination - 1) * pageSize,
-          select: shipSelectedFields,
-          ...params.otherFilters,
-        }
+      .pipe(
+        untilDestroyed(this),
+        switchMap((params) => {
+          const options = {
+            limit: pageSize,
+            offset: (params.pagination - 1) * pageSize,
+            select: shipSelectedFields,
+          }
 
-        this.loadService.startLoading()
-
-        this.httpClient
-          .post<TQuery<TQueriedShipDto>>(API_SHIPS_QUERY, {
-            query: {},
-            options: options,
-          })
-          .pipe(untilDestroyed(this))
-          .subscribe((result) => {
-            this.loadService.endLoading()
-            this._data$.next(this.deserialize(result.docs))
-            this.paginationService.setMovePossibility({
-              canPrev: result.hasPrevPage,
-              canNext: result.hasNextPage,
+          this.loadService.startLoading()
+          return this.httpClient
+            .post<TQuery<TQueriedShipDto>>(API_SHIPS_QUERY, {
+              query: { ...params.filters },
+              options: options,
             })
-          })
+            .pipe(untilDestroyed(this))
+        })
+      )
+      .subscribe((result) => {
+        this.loadService.endLoading()
+        this._data$.next(this.deserialize(result.docs))
+        this.paginationService.setMovePossibility({
+          canPrev: result.hasPrevPage,
+          canNext: result.hasNextPage,
+        })
       })
   }
 

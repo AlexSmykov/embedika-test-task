@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  height: fit-content;
+  width: 100%;
+
+  .input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    border-bottom: solid 1px var(--gray-border);
+
+    font-size: 18px;
+    caret-color: var(--blue);
+
+    &:focus {
+      border: none;
+      outline: none;
+      border-bottom: solid 1px var(--blue);
+    }
+  }
+}

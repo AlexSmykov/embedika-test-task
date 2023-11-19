@@ -1,0 +1,33 @@
+<app-control-wrapper [control]="control" [placeholder]="placeholder">
+  <div
+    class="multiselect-container"
+    (mouseleave)="isShowDropdown = false"
+    (click)="isShowDropdown = true"
+  >
+    <input
+      class="input"
+      type="text"
+      [readOnly]="true"
+      [value]="control.value.length ? stringify(control.value) : ''"
+      [placeholder]="placeholder"
+    />
+    <div *ngIf="isShowDropdown" class="dropdown">
+      <ul class="dropdown__list">
+        <li
+          class="dropdown__item"
+          *ngFor="let variantWithControl of variantsWithControl"
+        >
+          <input
+            class="dropdown__item__checkbox"
+            type="checkbox"
+            [formControl]="variantWithControl.checked"
+            [id]="variantWithControl.id"
+          />
+          <label [for]="variantWithControl.id" class="dropdown__item__label">{{
+            variantWithControl.name
+          }}</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</app-control-wrapper>

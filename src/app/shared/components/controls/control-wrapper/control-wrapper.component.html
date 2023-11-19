@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <p *ngIf="control.value?.length ?? control.value" class="wrapper__label">
+    {{ placeholder }}
+  </p>
+  <ng-content></ng-content>
+</div>

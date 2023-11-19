@@ -24,14 +24,20 @@ export class PaginationService {
     return this._currentPage$.asObservable()
   }
 
-  setCurrentPage(moveDirection: EPaginationDirection): void {
-    switch (moveDirection) {
-      case EPaginationDirection.NEXT:
-        this._currentPage$.next(this._currentPage$.getValue() + 1)
-        break
-      case EPaginationDirection.PREVIOUS:
-        this._currentPage$.next(this._currentPage$.getValue() - 1)
-        break
+  setCurrentPage(moveDirection?: EPaginationDirection, page?: number): void {
+    if (page) {
+      this._currentPage$.next(page)
+      return
+    }
+    if (moveDirection) {
+      switch (moveDirection) {
+        case EPaginationDirection.NEXT:
+          this._currentPage$.next(this._currentPage$.getValue() + 1)
+          break
+        case EPaginationDirection.PREVIOUS:
+          this._currentPage$.next(this._currentPage$.getValue() - 1)
+          break
+      }
     }
   }
 

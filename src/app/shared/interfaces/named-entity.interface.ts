@@ -1,4 +1,4 @@
 export type TNamedEntity = {
   name: string
-  id: number
+  id: number | string
 }

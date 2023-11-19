@@ -1,0 +1,12 @@
+<div class="radio-list">
+  <div *ngFor="let variant of variants" class="radio-item">
+    <input
+      class="input"
+      type="radio"
+      [formControl]="control"
+      [value]="variant.id"
+      [id]="variant.id"
+    />
+    <label [for]="variant.id">{{ variant.name }}</label>
+  </div>
+</div>
