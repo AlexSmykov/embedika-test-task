@@ -56,7 +56,7 @@
               "buildTarget": "embedika-test-task:build:development"
             }
           },
-          "defaultConfiguration": "development",
+          "defaultConfiguration": "production",
           "options": {
             "proxyConfig": "proxy.conf.json"
           }
