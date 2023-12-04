@@ -1,13 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/api/:match*",
-      "destination": "https://api.endpoint.url/:match*"
+      "source": "/v4/:match*",
+      "destination": "https://v4.endpoint.url/:match*"
     }
   ],
   "headers": [
     {
-      "source": "api/(.*)",
+      "source": "v4/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
